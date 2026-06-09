@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 class Student {
     private String studentId;
     private String studentName;
@@ -49,7 +52,7 @@ public class StudentGradeManagementSystem {
                     break;
 
                 case 2:
-                     displayStudents();
+                    displayStudents();
                     break;
 
                 case 3:
@@ -57,7 +60,7 @@ public class StudentGradeManagementSystem {
                     break;
 
                 case 4:
-                  
+                    calculateAverage();
                     break;
 
                 case 5:
@@ -89,7 +92,9 @@ public class StudentGradeManagementSystem {
 
         System.out.println("Student Added Successfully!");
     }
-	private static void displayStudents() {
+
+    
+    private static void displayStudents() {
         if (students.isEmpty()) {
             System.out.println("No Students Available.");
         } else {
@@ -118,7 +123,20 @@ public class StudentGradeManagementSystem {
         }
     }
 
+    private static void calculateAverage() {
+        if (students.isEmpty()) {
+            System.out.println("No Student Records Available.");
+            return;
+        }
 
-    
-   
+        double total = 0;
+
+        for (Student s : students) {
+            total += s.getMarks();
+        }
+
+        double average = total / students.size();
+
+        System.out.println("Average Marks = " + average);
+    }
 }
