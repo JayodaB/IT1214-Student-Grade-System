@@ -49,11 +49,11 @@ public class StudentGradeManagementSystem {
                     break;
 
                 case 2:
-                    
+                     displayStudents();
                     break;
 
                 case 3:
-                    
+                    searchStudent();
                     break;
 
                 case 4:
@@ -89,6 +89,35 @@ public class StudentGradeManagementSystem {
 
         System.out.println("Student Added Successfully!");
     }
+	private static void displayStudents() {
+        if (students.isEmpty()) {
+            System.out.println("No Students Available.");
+        } else {
+            for (Student s : students) {
+                s.displayStudent();
+            }
+        }
+    }
+	
+    private static void searchStudent() {
+        System.out.print("Enter Student ID: ");
+        String searchId = sc.nextLine();
+
+        boolean found = false;
+
+        for (Student s : students) {
+            if (s.getStudentId().equalsIgnoreCase(searchId)) {
+                s.displayStudent();
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Student Not Found.");
+        }
+    }
+
 
     
    
